@@ -1,0 +1,62 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+Project Code Quality & Standards
+
+- Language Usage:
+All user-facing text in the application must use British English spelling and conventions.
+
+- Code Cleanliness:
+Do not leave comments, console.log statements, or any debugging code in the codebase unless explicitly requested.
+
+- State Management:
+Minimise use of useState and useEffect. Prefer a data-driven architecture where possible.
+
+- Query-Centric Approach:
+Use TanStack Query cache as the single source of truth for server state. Avoid duplicating server data in local state.
+
+- UI Reactivity:
+Components should be reactive to query state. Avoid imperative state handling and manual data syncing.
+
+- Consistency & Simplicity:
+Follow consistent patterns throughout the codebase.
+Prioritise clarity, predictability, and simplicity over cleverness.
+Do not overcomplicate code or solutions — write simple, reliable, and maintainable code.
+
+- TypeScript Best Practices:
+Always use proper typing; avoid any type where possible. Utilize TypeScript's utility types when appropriate (Pick, Omit, etc.). Define interfaces for all component props and state.
+
+- Code Organization:
+Group related components and hooks in feature-based directories. Follow consistent import ordering (external → internal). Maintain a clear separation between UI and business logic.
+
+- Component Structure:
+Keep components small and focused. If it has more than one responsibility, split it.
+
+- Reusability:
+Abstract repeated logic into reusable hooks, utils, or shared components. Don't reinvent the wheel for each feature.
+
+- TanStack First-Class Usage:
+Use TanStack Router for routing with file-based structure. Prefer TanStack Query for all data fetching and caching. Follow best practices:
+Use loader APIs to fetch data on route-level. 
+Co-locate queries with the routes/components that consume them. 
+Use queryClient.invalidateQueries for refresh logic instead of manual state hacks. 
+Keep route modules clean by separating logic (e.g. useQuery, mutations) into dedicated hooks. 
+Embrace "cache-first" patterns — if you're fetching data with useEffect, you're doing it wrong.
+
+- Helper Abstractions:
+Extract reusable logic into helper functions, custom hooks, or utility files. This includes:
+Data transformations and formatting.
+Shared hook logic (e.g. pagination, query options, mutation patterns).
+API wrappers or service-layer logic.
+Schema validations and default value factories.
+Don't repeat yourself — if it feels reusable, make it modular.
+
+- UI Components with shadcn/ui:
+Use the shadcn/ui component library for all UI elements. Prefer extending or composing existing shadcn components over building from scratch.
+Do not import random UI libs or roll your own buttons because you're feeling "creative".
+Custom components should follow the same structure and styling as shadcn.
+Consistency, accessibility, and theme adherence are non-negotiable.
+
+

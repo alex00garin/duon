@@ -1,0 +1,87 @@
+/**
+* Font Family: Chillax
+* Designed by: Manushi Parikh
+* URL: https://www.fontshare.com/fonts/chillax
+* © 2025 Indian Type Foundry
+*/
+
+@font-face {
+  font-family: "Chillax";
+  src:
+    url("@/font/Fonts/WEB/fonts/Chillax-Extralight.woff2") format("woff2"),
+    url("@/font/Fonts/WEB/fonts/Chillax-Extralight.woff") format("woff"),
+    url("@/font/Fonts/WEB/fonts/Chillax-Extralight.ttf") format("truetype");
+  font-weight: 200;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Chillax";
+  src:
+    url("@/font/Fonts/WEB/fonts/Chillax-Light.woff2") format("woff2"),
+    url("@/font/Fonts/WEB/fonts/Chillax-Light.woff") format("woff"),
+    url("@/font/Fonts/WEB/fonts/Chillax-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Chillax";
+  src:
+    url("@/font/Fonts/WEB/fonts/Chillax-Regular.woff2") format("woff2"),
+    url("@/font/Fonts/WEB/fonts/Chillax-Regular.woff") format("woff"),
+    url("@/font/Fonts/WEB/fonts/Chillax-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Chillax";
+  src:
+    url("@/font/Fonts/WEB/fonts/Chillax-Medium.woff2") format("woff2"),
+    url("@/font/Fonts/WEB/fonts/Chillax-Medium.woff") format("woff"),
+    url("@/font/Fonts/WEB/fonts/Chillax-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Chillax";
+  src:
+    url("@/font/Fonts/WEB/fonts/Chillax-Semibold.woff2") format("woff2"),
+    url("@/font/Fonts/WEB/fonts/Chillax-Semibold.woff") format("woff"),
+    url("@/font/Fonts/WEB/fonts/Chillax-Semibold.ttf") format("truetype");
+  font-weight: 600;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Chillax";
+  src:
+    url("@/font/Fonts/WEB/fonts/Chillax-Bold.woff2") format("woff2"),
+    url("@/font/Fonts/WEB/fonts/Chillax-Bold.woff") format("woff"),
+    url("@/font/Fonts/WEB/fonts/Chillax-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}
+
+/**
+* Variable font version - supports font-weight 200-700
+* You can control variable axes with: font-variation-settings: wght 500.0;
+*/
+@font-face {
+  font-family: "Chillax Variable";
+  src:
+    url("@/font/Fonts/WEB/fonts/Chillax-Variable.woff2") format("woff2"),
+    url("@/font/Fonts/WEB/fonts/Chillax-Variable.woff") format("woff"),
+    url("@/font/Fonts/WEB/fonts/Chillax-Variable.ttf") format("truetype");
+  font-weight: 200 700;
+  font-display: swap;
+  font-style: normal;
+}
