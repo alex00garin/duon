@@ -1,6 +1,6 @@
 import { createRoute } from "@tanstack/react-router";
 import { Route as rootRoute } from "./__root";
-import { ShopHeader } from "@/components/shop/ShopHeader";
+import { Section } from "@/components/Section";
 import { ProductGrid } from "@/components/shop/ProductGrid";
 import { toast } from "sonner";
 
@@ -26,15 +26,16 @@ function Shop() {
   };
 
   return (
-    <div className="flex flex-col items-center mt-10 text-left">
-      <div className="max-w-7xl mx-auto w-full">
-        <ShopHeader />
-        <ProductGrid
-          onProductInfo={handleProductInfo}
-          onProductFavorite={handleProductFavorite}
-          onProductAddToCart={handleProductAddToCart}
-        />
-      </div>
-    </div>
+    <Section
+      title="Shop"
+      description="Browse our collection of products and services."
+      animated={true}
+    >
+      <ProductGrid
+        onProductInfo={handleProductInfo}
+        onProductFavorite={handleProductFavorite}
+        onProductAddToCart={handleProductAddToCart}
+      />
+    </Section>
   );
 }
