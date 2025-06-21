@@ -8,26 +8,23 @@ export function Header() {
   const isVisible = useScrollVisibility();
 
   return (
-    <div className="border-b">
-      <header
-        className={`
-           mx-auto
-          sticky top-0 z-50 
-          flex justify-between items-center w-full
-          ${HEADER_HEIGHT}
-          px-4
-          bg-background/80 backdrop-blur-md
-          transition-transform duration-300 ease-in-out
-          ${isVisible ? "translate-y-0" : "-translate-y-full"}
-        `}
-      >
-        <Logo />
+    <header
+      className={`
+        fixed top-0 left-0 right-0 z-50 
+        flex justify-between items-center w-full
+        ${HEADER_HEIGHT}
+        px-4 mx-auto
+        bg-background/80 backdrop-blur-md border-b
+        transition-transform duration-300 ease-in-out
+        ${isVisible ? "translate-y-0" : "-translate-y-full"}
+      `}
+    >
+      <Logo />
 
-        <div className="flex items-center h-full">
-          <Navigation />
-          <ModeToggle />
-        </div>
-      </header>
-    </div>
+      <div className="flex items-center h-full">
+        <Navigation />
+        <ModeToggle />
+      </div>
+    </header>
   );
 }

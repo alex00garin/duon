@@ -8,12 +8,17 @@ export function useScrollVisibility() {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
-      // Show header when at top of page
       if (currentScrollY < 10) {
         setIsVisible(true);
+        setLastScrollY(currentScrollY);
+        return;
       }
-      // Hide when scrolling down, show when scrolling up
-      else if (currentScrollY > lastScrollY && currentScrollY > 100) {
+
+      if (Math.abs(currentScrollY - lastScrollY) < 5) {
+        return;
+      }
+
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
         setIsVisible(false);
       } else if (currentScrollY < lastScrollY) {
         setIsVisible(true);
@@ -22,7 +27,6 @@ export function useScrollVisibility() {
       setLastScrollY(currentScrollY);
     };
 
-    // Throttle scroll events for better performance
     let ticking = false;
     const throttledHandleScroll = () => {
       if (!ticking) {
@@ -33,6 +37,8 @@ export function useScrollVisibility() {
         ticking = true;
       }
     };
+
+    setLastScrollY(window.scrollY);
 
     window.addEventListener("scroll", throttledHandleScroll, { passive: true });
 
