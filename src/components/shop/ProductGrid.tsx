@@ -4,12 +4,14 @@ import { ProductCard } from "./ProductCard";
 const PRODUCTS = [1, 2, 3, 4];
 
 interface ProductGridProps {
+  isTwoColumns: boolean;
   onProductInfo?: (id: number) => void;
   onProductFavorite?: (id: number) => void;
   onProductAddToCart?: (id: number) => void;
 }
 
 export function ProductGrid({
+  isTwoColumns,
   onProductInfo,
   onProductFavorite,
   onProductAddToCart,
@@ -21,8 +23,12 @@ export function ProductGrid({
     setActiveCardId(activeCardId === id ? null : id);
   };
 
+  const gridClasses = isTwoColumns
+    ? "grid grid-cols-2 md:grid-cols-4 gap-6"
+    : "grid grid-cols-1 md:grid-cols-4 gap-6";
+
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 ">
+    <div className={gridClasses}>
       {PRODUCTS.map((id, index) => (
         <ProductCard
           key={id}

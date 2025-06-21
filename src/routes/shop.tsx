@@ -2,7 +2,9 @@ import { createRoute } from "@tanstack/react-router";
 import { Route as rootRoute } from "./__root";
 import { Section } from "@/components/Section";
 import { ProductGrid } from "@/components/shop/ProductGrid";
+import { LayoutToggle } from "@/components/shop/LayoutToggle";
 import { toast } from "sonner";
+import { useState } from "react";
 
 export const Route = createRoute({
   getParentRoute: () => rootRoute,
@@ -11,6 +13,8 @@ export const Route = createRoute({
 });
 
 function Shop() {
+  const [isTwoColumns, setIsTwoColumns] = useState(false);
+
   const handleProductInfo = (id: number) => {
     console.log(`Show info for product ${id}`);
   };
@@ -31,7 +35,15 @@ function Shop() {
       description="Browse our collection of products and services."
       animated={true}
     >
+      <div className="flex justify-end mb-6">
+        <LayoutToggle
+          isTwoColumns={isTwoColumns}
+          onToggle={() => setIsTwoColumns(!isTwoColumns)}
+        />
+      </div>
+
       <ProductGrid
+        isTwoColumns={isTwoColumns}
         onProductInfo={handleProductInfo}
         onProductFavorite={handleProductFavorite}
         onProductAddToCart={handleProductAddToCart}
