@@ -8,9 +8,15 @@ import { Route as rootRoute } from "./routes/__root";
 import { Route as indexRoute } from "./routes/index";
 import { Route as aboutRoute } from "./routes/about";
 import { Route as shopRoute } from "./routes/shop";
+import { Route as coffeeRoute } from "./routes/coffee";
 
 // Create route tree manually
-const routeTree = rootRoute.addChildren([indexRoute, aboutRoute, shopRoute]);
+const routeTree = rootRoute.addChildren([
+  indexRoute,
+  aboutRoute,
+  shopRoute,
+  coffeeRoute,
+]);
 
 // Create a new router instance
 const router = createRouter({

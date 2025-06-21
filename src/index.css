@@ -49,6 +49,13 @@
 
 :root {
   --radius: 0.625rem;
+
+  /* Header height custom properties */
+  --header-height-mobile: 4rem;
+  --header-height-sm: 5rem;
+  --header-height-md: 6rem;
+  --header-height-lg: 9.5rem;
+
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);

@@ -1,25 +1,22 @@
 import { createRoute } from "@tanstack/react-router";
 import { Route as rootRoute } from "./__root";
-import { BlurIn } from "@/components/blur-in";
 import { CONTENT_MIN_HEIGHT } from "@/lib/constants";
 
 export const Route = createRoute({
   getParentRoute: () => rootRoute,
-  path: "/",
-  component: Index,
+  path: "/coffee",
+  component: Coffee,
 });
 
-function Index() {
+function Coffee() {
   return (
     <div
       className={`flex flex-col items-center justify-center ${CONTENT_MIN_HEIGHT} text-center`}
     >
-      <h1 className="text-5xl mb-4 uppercase">DŪON</h1>
-      <BlurIn>
-        <p className="text-2xl">
-          Minimal coffee. Everyday wear. Made with intent.
-        </p>
-      </BlurIn>
+      <div className="max-w-6xl mx-auto">
+        <h1 className="text-3xl font-bold mb-6">Coffee</h1>
+        <p className="text-lg text-muted-foreground">Coming soon.</p>
+      </div>
     </div>
   );
 }

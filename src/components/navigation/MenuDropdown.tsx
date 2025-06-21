@@ -12,8 +12,8 @@ export function MenuDropdown({ isOpen, onClose }: MenuDropdownProps) {
     <div
       className="
         fixed left-0 right-0 
-        top-16 sm:top-20 md:top-24 lg:top-[9.5rem]
-        h-[calc(100vh-4rem)] sm:h-[calc(100vh-5rem)] md:h-[calc(100vh-6rem)] lg:h-[calc(100vh-9.5rem)]
+        top-[var(--header-height-mobile)] sm:top-[var(--header-height-sm)] md:top-[var(--header-height-md)] lg:top-[var(--header-height-lg)]
+        h-[calc(100vh-var(--header-height-mobile))] sm:h-[calc(100vh-var(--header-height-sm))] md:h-[calc(100vh-var(--header-height-md))] lg:h-[calc(100vh-var(--header-height-lg))]
         animate-dropdown-slide-up
         bg-background z-40
         border-t overflow-hidden
@@ -40,6 +40,13 @@ export function MenuDropdown({ isOpen, onClose }: MenuDropdownProps) {
             onClick={onClose}
           >
             Home
+          </Link>
+          <Link
+            to="/coffee"
+            className="block text-end hover:text-neutral-300 dark:hover:text-secondary transition-colors"
+            onClick={onClose}
+          >
+            Coffee
           </Link>
           <Link
             to="/shop"

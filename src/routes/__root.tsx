@@ -7,7 +7,7 @@ const rootRoute = createRootRoute({
     <ThemeProvider defaultTheme="dark" storageKey="duon-theme">
       <div className="min-h-screen bg-background text-foreground">
         <Header />
-        <main className="container mx-auto px-4 py-8 border-x h-[calc(100vh-9.5rem)]">
+        <main className="p-4 h-[calc(100vh-var(--header-height-lg))]">
           <Outlet />
         </main>
       </div>
