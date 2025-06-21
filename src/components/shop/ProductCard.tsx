@@ -1,9 +1,12 @@
 import { motion } from "framer-motion";
 import { ActionButtons } from "./ActionButtons";
+import { Hand } from "lucide-react";
 
 interface ProductCardProps {
   id: number;
   index: number;
+  isActive: boolean;
+  onCardClick: () => void;
   onInfo?: () => void;
   onFavorite?: () => void;
   onAddToCart?: () => void;
@@ -12,6 +15,8 @@ interface ProductCardProps {
 export function ProductCard({
   id,
   index,
+  isActive,
+  onCardClick,
   onInfo,
   onFavorite,
   onAddToCart,
@@ -26,6 +31,7 @@ export function ProductCard({
         delay: 0.4 + index * 0.1,
         ease: "easeOut",
       }}
+      onClick={onCardClick}
     >
       {/* Background Image */}
       <img
@@ -38,14 +44,30 @@ export function ProductCard({
       <img
         src={`/assets/mock-${id}.png`}
         alt={`Product ${id}`}
-        className="
+        className={`
           absolute inset-0 w-full h-full object-cover
           transition-transform duration-500 ease-in-out
-          group-hover:scale-75
-        "
+          md:group-hover:scale-75
+          ${isActive ? "scale-75" : ""}
+        `}
       />
 
+      {/* Mobile tap indicator */}
+      <div
+        className={`
+        absolute top-2 right-2 
+        md:hidden
+        bg-background/20 backdrop-blur-sm 
+         p-2
+        transition-opacity duration-300
+        ${isActive ? "opacity-0" : "opacity-60"}
+      `}
+      >
+        <Hand className="w-4 h-4 text-secondary" />
+      </div>
+
       <ActionButtons
+        isActive={isActive}
         onInfo={onInfo}
         onFavorite={onFavorite}
         onAddToCart={onAddToCart}

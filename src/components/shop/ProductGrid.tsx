@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { ProductCard } from "./ProductCard";
 
 const PRODUCTS = [1, 2, 3, 4];
@@ -13,6 +14,13 @@ export function ProductGrid({
   onProductFavorite,
   onProductAddToCart,
 }: ProductGridProps) {
+  const [activeCardId, setActiveCardId] = useState<number | null>(null);
+
+  const handleCardClick = (id: number) => {
+    // Toggle active state for mobile
+    setActiveCardId(activeCardId === id ? null : id);
+  };
+
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 ">
       {PRODUCTS.map((id, index) => (
@@ -20,6 +28,8 @@ export function ProductGrid({
           key={id}
           id={id}
           index={index}
+          isActive={activeCardId === id}
+          onCardClick={() => handleCardClick(id)}
           onInfo={() => onProductInfo?.(id)}
           onFavorite={() => onProductFavorite?.(id)}
           onAddToCart={() => onProductAddToCart?.(id)}

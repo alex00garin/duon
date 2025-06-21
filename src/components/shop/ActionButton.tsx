@@ -20,7 +20,10 @@ export function ActionButton({
     <Tooltip>
       <TooltipTrigger asChild>
         <button
-          onClick={onClick}
+          onClick={e => {
+            e.stopPropagation();
+            onClick?.();
+          }}
           className="
             w-9 h-9  bg-black/20 backdrop-blur-sm
             flex items-center justify-center
