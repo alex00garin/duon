@@ -169,8 +169,52 @@ export const coffeeTopics: CoffeeTopic[] = [
     content: [
       {
         title: "Light Roast",
-        description: "Bright, fruity, floral. Best for espresso and filter.",
+        description: `High notes, no roast flavour. Preserves original bean character. Often used for single origin Arabica.
+          Colour: light brown
+          Surface: dry
+          First crack: just completed
+          Flavour: floral, fruity, tea-like, acidic
+          Body: light
+          Best for: pour-over, Aeropress, filter
+          AKA: Cinnamon, Half City, Light City.`,
         illustration: "/coffee/light-roast.png",
+      },
+      {
+        title: "Medium Roast",
+        description: `Balanced. Sweetness meets acidity. Roast character begins to appear, but origin still shows through.
+          Colour: medium brown
+          Surface: dry
+          First crack: completed
+          Second crack: not yet started
+          Flavour: nutty, caramel, chocolate
+          Body: medium
+          Best for: drip, filter, espresso
+          AKA: City, American, Breakfast Roast.`,
+        illustration: "/coffee/medium-roast.png",
+      },
+      {
+        title: "Medium-Dark Roast",
+        description: `Roasty, rich, and bold. Some oils start to surface. More bitterness, heavier body, lower acidity.
+          Colour: dark brown
+          Surface: slight oil sheen
+          Second crack: starting
+          Flavour: dark chocolate, spice, roast
+          Body: full
+          Best for: moka pot, espresso, French press
+          AKA: Full City, Vienna.`,
+        illustration: "/coffee/medium-dark-roast.png",
+      },
+      {
+        title: "Dark Roast",
+        description: `Intense, smoky, less origin flavour. Oils dominate. Low acidity, bitter finish. Think diner coffee or classic espresso.
+          Colour: black or very dark brown
+          Surface: oily
+          Second crack: completed
+          Flavour: smoky, bitter, charcoal, toasted nuts
+          Body: heavy
+          Best for: espresso, milk-based drinks
+          AKA: French, Italian, Espresso Roast.`,
+        illustration: "/coffee/dark-roast.png",
       },
     ],
   },
