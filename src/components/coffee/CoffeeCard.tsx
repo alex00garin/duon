@@ -1,13 +1,13 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { ChevronDown } from "lucide-react";
+import type { CoffeeTopicDetailed } from "@/lib/coffee-data";
 
 interface CoffeeCardProps {
   title: string;
   description: string;
-  content: string;
-  index: number;
+  content: CoffeeTopicDetailed[];
   isActive: boolean;
-  isCollapsed: boolean;
+  isHeaderVisible: boolean;
   onClick: () => void;
 }
 
@@ -15,70 +15,77 @@ export function CoffeeCard({
   title,
   description,
   content,
-  index,
   isActive,
-  isCollapsed,
+  isHeaderVisible,
   onClick,
 }: CoffeeCardProps) {
-  return (
-    <div>
-      <motion.div
-        className="relative group cursor-pointer overflow-hidden"
-        initial={{ opacity: 0, y: 30, scale: 0.9 }}
-        animate={{ opacity: 1, y: 0, scale: 1 }}
-        transition={{
-          duration: 0.6,
-          delay: 0.4 + index * 0.1,
-          ease: "easeOut",
-        }}
-      >
-        <div
-          onClick={onClick}
-          className={`block border border-border bg-background transition-all z-10 duration-200 hover:-translate-y-1 ${
-            isActive ? "bg-muted border-foreground" : ""
-          } ${isCollapsed ? "p-4" : "p-6"}`}
-        >
-          <div className="flex items-start justify-between">
-            <div className="flex-1">
-              <div className="relative overflow-hidden mb-2">
-                <h3
-                  className={`relative z-10 font-semibold uppercase tracking-wide transition-colors duration-500 group-hover:text-background ${
-                    isCollapsed ? "text-sm" : "text-lg"
-                  }`}
-                >
-                  {title}
-                </h3>
-                {/* Fill effect for title */}
-                <div className="absolute left-0 right-0 bottom-0 h-0 bg-foreground transition-all duration-500 ease-out group-hover:h-full" />
-              </div>
-              {!isCollapsed && (
-                <p className="text-sm text-muted-foreground">{description}</p>
-              )}
-            </div>
-            <ArrowUpRight
-              className={`text-muted-foreground group-hover:text-foreground transition-colors flex-shrink-0 ${
-                isCollapsed ? "w-3 h-3 ml-2" : "w-4 h-4 ml-4"
-              }`}
-            />
-          </div>
-        </div>
-      </motion.div>
+  // Calculate sticky position based on header visibility
+  const stickyTop = isHeaderVisible
+    ? "top-[var(--header-height-mobile)] sm:top-[var(--header-height-sm)] md:top-[var(--header-height-md)] lg:top-[var(--header-height-lg)]"
+    : "top-0";
 
-      {/* Mobile accordion content */}
+  return (
+    <div className="border border-border bg-background">
+      {/* Card Header - Sticky when active */}
+      <button
+        onClick={onClick}
+        className={`w-full p-6 text-left hover:bg-muted/50 transition-colors duration-200 flex items-center justify-between bg-background border-b border-border/50 ${
+          isActive ? `sticky ${stickyTop} z-10` : ""
+        }`}
+      >
+        <div>
+          <h3 className="text-lg font-semibold uppercase tracking-wide mb-2">
+            {title}
+          </h3>
+          <p className="text-sm text-muted-foreground">{description}</p>
+        </div>
+        <ChevronDown
+          className={`w-5 h-5 text-muted-foreground transition-transform duration-200 ${
+            isActive ? "rotate-180" : ""
+          }`}
+        />
+      </button>
+
+      {/* Expandable Content */}
       <AnimatePresence>
         {isActive && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="md:hidden border-l border-r border-b border-border bg-muted/30 px-6 pb-6"
+            className="bg-muted/30 max-h-[70vh] overflow-y-auto"
           >
-            <div className="pt-4">
-              <h4 className="text-lg font-semibold mb-3 uppercase">{title}</h4>
-              <p className="text-muted-foreground leading-relaxed text-sm">
-                {content}
-              </p>
+            <div className="p-6 space-y-6">
+              {content.map((item, index) => (
+                <div
+                  key={index}
+                  className="flex flex-col md:flex-row gap-4 pb-6 border-b border-border/30 last:border-0 last:pb-0"
+                >
+                  <div className="flex-1">
+                    <h4 className="text-base font-semibold mb-3">
+                      {item.title}
+                    </h4>
+                    <p className="text-muted-foreground leading-relaxed text-sm whitespace-pre-line">
+                      {item.description}
+                    </p>
+                  </div>
+                  <div className="md:w-32 md:h-32 w-full h-auto bg-muted/50 border border-border/50 flex items-center justify-center overflow-hidden flex-shrink-0">
+                    {item.illustration ? (
+                      <img
+                        src={item.illustration}
+                        alt={item.title}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <div className="text-center text-muted-foreground">
+                        <div className="text-2xl mb-1">☕</div>
+                        <p className="text-xs">{item.title}</p>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ))}
             </div>
           </motion.div>
         )}
