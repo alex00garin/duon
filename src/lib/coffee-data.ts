@@ -105,9 +105,60 @@ export const coffeeTopics: CoffeeTopic[] = [
     href: "/coffee/bean-types",
     content: [
       {
-        title: "Arabica",
-        description: "Smooth, acidic, balanced. Best for espresso and filter.",
+        title: "Arabica (Coffea arabica)",
+        description: `High-altitude diva. Grows best at 600–2000m with cooler temps. Needs shade, care, and zero drama. Makes up ~60% of global coffee. Lower caffeine but higher quality.
+          Origin: Ethiopia
+          Growing region: Latin America, East Africa, India
+          Flavour: floral, citrus, berry, chocolate
+          Body: light to medium
+          Acidity: high
+          Caffeine: ~1.2%
+          Shape: oval, curved crease
+          Resistance: low — vulnerable to pests and disease
+          Best for: filter, pour-over, high-end espresso.`,
         illustration: "/coffee/arabica.png",
+      },
+      {
+        title: "Robusta (Coffea canephora)",
+        description: `Tough-as-nails bean. Thrives in hot, low-altitude areas. Twice the caffeine of Arabica. Often seen as lower quality but creates killer crema and caffeine kick.
+          Origin: Sub-Saharan Africa
+          Growing region: Vietnam, Brazil, India, Africa
+          Flavour: earthy, nutty, bitter, woody
+          Body: full
+          Acidity: low
+          Caffeine: ~2.2%
+          Shape: round, straight crease
+          Resistance: high — drought, pests, disease
+          Best for: espresso blends, instant, budget coffee.`,
+        illustration: "/coffee/robusta.png",
+      },
+      {
+        title: "Liberica (Coffea liberica)",
+        description: `The rare misfit. Big, bold, and oddly fruity-smoky. Trees grow tall (up to 20m) and beans are huge. Cult favourite in the Philippines.
+          Origin: Liberia
+          Growing region: Philippines, Malaysia, West Africa
+          Flavour: smoky, floral, jackfruit, woody
+          Body: medium to heavy
+          Acidity: low to medium
+          Caffeine: ~1.2%
+          Shape: asymmetric, teardrop
+          Resistance: decent — hardy but niche
+          Best for: heritage brews, weird flavour chasers.`,
+        illustration: "/coffee/liberica.png",
+      },
+      {
+        title: "Excelsa (Coffea excelsa)",
+        description: `Wildcard of the coffee world. A Liberica subtype that adds sharp, fruity notes to blends. Often misclassified. Low production, high curiosity.
+          Origin: Central Africa
+          Growing region: Southeast Asia
+          Flavour: tart, fruity, dark cherry, light roast acidity
+          Body: medium
+          Acidity: high
+          Caffeine: ~1%
+          Shape: almond-shaped, elongated
+          Resistance: moderate
+          Best for: blending, exotic profiles, experimentation.`,
+        illustration: "/coffee/excelsa.png",
       },
     ],
   },
