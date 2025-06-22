@@ -13,7 +13,7 @@ export const Route = createRoute({
 });
 
 function Shop() {
-  const [isTwoColumns, setIsTwoColumns] = useState(false);
+  const [isTwoColumns, setIsTwoColumns] = useState(true);
 
   const handleProductInfo = (id: number) => {
     console.log(`Show info for product ${id}`);

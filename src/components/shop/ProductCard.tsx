@@ -1,9 +1,10 @@
 import { motion } from "framer-motion";
 import { ActionButtons } from "./ActionButtons";
 import { Hand } from "lucide-react";
+import type { Product } from "@/lib/shop-data";
 
 interface ProductCardProps {
-  id: number;
+  product: Product;
   index: number;
   isActive: boolean;
   onCardClick: () => void;
@@ -13,7 +14,7 @@ interface ProductCardProps {
 }
 
 export function ProductCard({
-  id,
+  product,
   index,
   isActive,
   onCardClick,
@@ -24,26 +25,34 @@ export function ProductCard({
   return (
     <motion.div
       className="relative group cursor-pointer overflow-hidden"
-      initial={{ opacity: 0, y: 30, scale: 0.9 }}
-      animate={{ opacity: 1, y: 0, scale: 1 }}
-      transition={{
-        duration: 0.6,
-        delay: 0.4 + index * 0.1,
-        ease: "easeOut",
+      initial={{ opacity: 0, y: 20, scale: 0.8 }}
+      whileInView={{
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        transition: {
+          duration: 0.4,
+          delay: index * 0.05,
+          ease: "easeOut",
+        },
+      }}
+      viewport={{
+        once: true,
+        margin: "20px",
       }}
       onClick={onCardClick}
     >
       {/* Background Image */}
       <img
-        src={`/assets/bg-${id}.png`}
-        alt={`Background ${id}`}
+        src={product.backgroundImage}
+        alt={`Background ${product.title}`}
         className="w-full h-auto object-cover"
       />
 
       {/* Mock Image (Front) */}
       <img
-        src={`/assets/mock-${id}.png`}
-        alt={`Product ${id}`}
+        src={product.mockImage}
+        alt={product.title}
         className={`
           absolute inset-0 w-full h-full object-cover
           transition-transform duration-500 ease-in-out
