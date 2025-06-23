@@ -118,7 +118,7 @@ export function ProductGrid({
 
       {selectedCategory === "All" ? (
         /* Show grouped products by category */
-        <div className="space-y-12">
+        <div className="space-y-12 pb-12">
           {groupedProducts.map((group, groupIndex) => (
             <div key={group.category} className="space-y-4">
               {/* Category Title */}
@@ -156,31 +156,6 @@ export function ProductGrid({
                   />
                 ))}
               </div>
-
-              {/* View All Button */}
-              <motion.div
-                className="text-end"
-                initial={{ opacity: 0 }}
-                whileInView={{
-                  opacity: 1,
-                  transition: {
-                    duration: 0.4,
-                    delay: 0.3,
-                    ease: "easeOut",
-                  },
-                }}
-                viewport={{
-                  once: true,
-                  margin: "20px",
-                }}
-              >
-                <button
-                  onClick={() => setSelectedCategory(group.category)}
-                  className="px-6 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors underline underline-offset-4"
-                >
-                  View All
-                </button>
-              </motion.div>
             </div>
           ))}
         </div>
