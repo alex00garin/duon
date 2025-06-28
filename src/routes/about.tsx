@@ -2,6 +2,12 @@ import { createRoute, Link } from "@tanstack/react-router";
 import { Route as rootRoute } from "./__root";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/components/language/useLanguage";
+import { useSEO } from "@/hooks/useSEO";
+import {
+  duonOrganization,
+  generateOrganizationStructuredData,
+  generateBreadcrumbStructuredData,
+} from "@/lib/seo";
 
 export const Route = createRoute({
   getParentRoute: () => rootRoute,
@@ -18,6 +24,20 @@ const translations = {
       location: "Cardiff, 2025",
       philosophy: "01 Philosophy",
       possibilities: "∞ Possibilities",
+    },
+    meta: {
+      title: "About DŪON - Our Philosophy & Story",
+      description:
+        "Born in Cardiff in 2025, DŪON represents the intersection of design and ritual. Learn about our philosophy of thoughtful curation over mass production and our commitment to exceptional quality.",
+      keywords: [
+        "about DŪON",
+        "Cardiff coffee company",
+        "coffee philosophy",
+        "design philosophy",
+        "artisan coffee",
+        "sustainable coffee",
+        "Welsh business",
+      ],
     },
     philosophy: {
       title: "Our Philosophy",
@@ -95,6 +115,20 @@ const translations = {
       philosophy: "01 Athroniaeth",
       possibilities: "∞ Posibiliadau",
     },
+    meta: {
+      title: "Amdanom DŪON - Ein Hathroniaeth a'n Stori",
+      description:
+        "Wedi'i eni yng Nghaerdydd yn 2025, mae DŪON yn cynrychioli croestoriad dylunio a defod. Dysgwch am ein hathroniaeth o guradu ystyriol dros gynhyrchu torfol a'n hymrwymiad i ansawdd eithriadol.",
+      keywords: [
+        "amdanom DŪON",
+        "cwmni coffi Caerdydd",
+        "athroniaeth coffi",
+        "athroniaeth dylunio",
+        "coffi crefftwyr",
+        "coffi cynaliadwy",
+        "busnes Cymreig",
+      ],
+    },
     philosophy: {
       title: "Ein Hathroniaeth",
       intro:
@@ -167,6 +201,42 @@ const translations = {
 function About() {
   const { language } = useLanguage();
   const t = translations[language];
+
+  // SEO Configuration
+  useSEO({
+    title: t.meta.title,
+    description: t.meta.description,
+    keywords: t.meta.keywords,
+    type: "website",
+    image: "/assets/beans/bg-1.png",
+    structuredData: [
+      generateOrganizationStructuredData(duonOrganization),
+      generateBreadcrumbStructuredData([
+        { name: "Home", url: "https://duon.coffee" },
+        {
+          name: language === "en" ? "About" : "Amdanom",
+          url: "https://duon.coffee/about",
+        },
+      ]),
+      {
+        "@context": "https://schema.org",
+        "@type": "AboutPage",
+        name: t.meta.title,
+        description: t.meta.description,
+        url: "https://duon.coffee/about",
+        mainEntity: {
+          "@type": "Organization",
+          name: "DŪON",
+          foundingDate: "2025",
+          foundingLocation: {
+            "@type": "Place",
+            name: "Cardiff, Wales",
+          },
+          description: t.meta.description,
+        },
+      },
+    ],
+  });
 
   const fadeInUp = {
     initial: { opacity: 0, y: 60 },
