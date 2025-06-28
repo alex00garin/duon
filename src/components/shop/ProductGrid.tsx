@@ -22,7 +22,7 @@ export function ProductGrid({
   const enCategories = productCategories.en;
 
   // Filter categories to only show ones with products
-  const availableCategories = categories.filter((category, index) => {
+  const availableCategories = categories.filter((_, index) => {
     // Always keep "All" / "Popeth" (first category)
     if (index === 0) return true;
 
