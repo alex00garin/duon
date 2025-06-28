@@ -6,14 +6,12 @@ import { useLanguage } from "@/components/language/useLanguage";
 
 interface ProductGridProps {
   isTwoColumns: boolean;
-  onProductInfo?: (id: number) => void;
   onProductFavorite?: (id: number) => void;
   onProductAddToCart?: (id: number) => void;
 }
 
 export function ProductGrid({
   isTwoColumns,
-  onProductInfo,
   onProductFavorite,
   onProductAddToCart,
 }: ProductGridProps) {
@@ -174,7 +172,6 @@ export function ProductGrid({
                     index={index + groupIndex * 4}
                     isActive={activeCardId === product.id}
                     onCardClick={() => handleCardClick(product.id)}
-                    onInfo={() => onProductInfo?.(product.id)}
                     onFavorite={() => onProductFavorite?.(product.id)}
                     onAddToCart={() => onProductAddToCart?.(product.id)}
                   />
@@ -192,7 +189,6 @@ export function ProductGrid({
               index={index}
               isActive={activeCardId === product.id}
               onCardClick={() => handleCardClick(product.id)}
-              onInfo={() => onProductInfo?.(product.id)}
               onFavorite={() => onProductFavorite?.(product.id)}
               onAddToCart={() => onProductAddToCart?.(product.id)}
             />

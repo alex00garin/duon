@@ -33,10 +33,6 @@ function Shop() {
   const t = translations[language];
   const [isTwoColumns, setIsTwoColumns] = useState(true);
 
-  const handleProductInfo = (id: number) => {
-    console.log(`Show info for product ${id}`);
-  };
-
   const handleProductFavorite = (id: number) => {
     console.log(`Toggle favorite for product ${id}`);
     toast.success(t.toastFavorite);
@@ -58,7 +54,6 @@ function Shop() {
 
       <ProductGrid
         isTwoColumns={isTwoColumns}
-        onProductInfo={handleProductInfo}
         onProductFavorite={handleProductFavorite}
         onProductAddToCart={handleProductAddToCart}
       />
