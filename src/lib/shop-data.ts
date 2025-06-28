@@ -1,5 +1,5 @@
 export interface Product {
-  id: number;
+  id: string;
   title: {
     en: string;
     cy: string;
@@ -27,7 +27,7 @@ export interface Product {
 export const products: Product[] = [
   // DŪON House Beans
   {
-    id: 1,
+    id: "guatemala-beans",
     title: {
       en: "Guatemala",
       cy: "Guatemala",
@@ -68,7 +68,7 @@ export const products: Product[] = [
     },
   },
   {
-    id: 2,
+    id: "colombia-beans",
     title: {
       en: "Colombia",
       cy: "Colombia",
@@ -109,7 +109,7 @@ export const products: Product[] = [
     },
   },
   {
-    id: 3,
+    id: "ethiopia-beans",
     title: {
       en: "Ethiopia",
       cy: "Ethiopia",
@@ -150,7 +150,7 @@ export const products: Product[] = [
     },
   },
   {
-    id: 4,
+    id: "brazil-beans",
     title: {
       en: "Brazil",
       cy: "Brasil",
@@ -192,7 +192,7 @@ export const products: Product[] = [
   },
   // Reusable Cups
   {
-    id: 5,
+    id: "glass-cup-matte",
     title: {
       en: "Reusable Cup",
       cy: "Cwpan Aildefnyddiadwy",
@@ -233,7 +233,7 @@ export const products: Product[] = [
     },
   },
   {
-    id: 6,
+    id: "cork-grip-cup",
     title: {
       en: "Cork Grip Cup",
       cy: "Cwpan Gafael Corc",
@@ -274,7 +274,7 @@ export const products: Product[] = [
     },
   },
   {
-    id: 7,
+    id: "silicone-grip-cup-v1",
     title: {
       en: "Silicone Grip Cup",
       cy: "Cwpan Gafael Silicone",
@@ -315,7 +315,7 @@ export const products: Product[] = [
     },
   },
   {
-    id: 8,
+    id: "silicone-grip-cup-v2",
     title: {
       en: "Silicone Grip Cup",
       cy: "Cwpan Gafael Silicone",

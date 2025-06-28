@@ -3,9 +3,9 @@ import { Route as rootRoute } from "./__root";
 import { Section } from "@/components/Section";
 import { ProductGrid } from "@/components/shop/ProductGrid";
 import { LayoutToggle } from "@/components/shop/LayoutToggle";
-import { toast } from "sonner";
 import { useState } from "react";
 import { useLanguage } from "@/components/language/useLanguage";
+import { useProductInterest } from "@/hooks/useProductInterest";
 
 export const Route = createRoute({
   getParentRoute: () => rootRoute,
@@ -17,14 +17,10 @@ const translations = {
   en: {
     title: "Shop",
     description: "Browse our collection of products and services.",
-    toastFavorite: "Added to favorites",
-    toastCart: "Added to cart",
   },
   cy: {
     title: "Siop",
     description: "Pori drwy ein casgliad o gynhyrchion a gwasanaethau.",
-    toastFavorite: "Wedi'i ychwanegu at ffefrynnau",
-    toastCart: "Wedi'i ychwanegu at y fasged",
   },
 };
 
@@ -32,16 +28,8 @@ function Shop() {
   const { language } = useLanguage();
   const t = translations[language];
   const [isTwoColumns, setIsTwoColumns] = useState(true);
-
-  const handleProductFavorite = (id: number) => {
-    console.log(`Toggle favorite for product ${id}`);
-    toast.success(t.toastFavorite);
-  };
-
-  const handleProductAddToCart = (id: number) => {
-    console.log(`Add product ${id} to cart`);
-    toast.success(t.toastCart);
-  };
+  const { interestCounts, userInterests, toggleInterest } =
+    useProductInterest();
 
   return (
     <Section title={t.title} description={t.description} animated={true}>
@@ -54,8 +42,9 @@ function Shop() {
 
       <ProductGrid
         isTwoColumns={isTwoColumns}
-        onProductFavorite={handleProductFavorite}
-        onProductAddToCart={handleProductAddToCart}
+        interestCounts={interestCounts}
+        userInterests={userInterests}
+        onToggleInterest={toggleInterest}
       />
     </Section>
   );

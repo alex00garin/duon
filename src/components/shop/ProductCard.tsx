@@ -11,8 +11,9 @@ interface ProductCardProps {
   index: number;
   isActive: boolean;
   onCardClick: () => void;
-  onFavorite?: () => void;
-  onAddToCart?: () => void;
+  onInterest?: () => void;
+  interestCount?: number;
+  isInterested?: boolean;
 }
 
 export function ProductCard({
@@ -20,8 +21,9 @@ export function ProductCard({
   index,
   isActive,
   onCardClick,
-  onFavorite,
-  onAddToCart,
+  onInterest,
+  interestCount = 0,
+  isInterested = false,
 }: ProductCardProps) {
   const { language } = useLanguage();
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -91,8 +93,9 @@ export function ProductCard({
         <ActionButtons
           isActive={isActive}
           onInfo={handleInfoClick}
-          onFavorite={onFavorite}
-          onAddToCart={onAddToCart}
+          onInterest={onInterest}
+          interestCount={interestCount}
+          isInterested={isInterested}
         />
       </motion.div>
 
@@ -100,6 +103,9 @@ export function ProductCard({
         product={product}
         isOpen={isModalOpen}
         onClose={handleCloseModal}
+        interestCount={interestCount}
+        isInterested={isInterested}
+        onToggleInterest={() => onInterest?.()}
       />
     </>
   );

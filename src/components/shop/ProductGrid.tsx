@@ -6,14 +6,16 @@ import { useLanguage } from "@/components/language/useLanguage";
 
 interface ProductGridProps {
   isTwoColumns: boolean;
-  onProductFavorite?: (id: number) => void;
-  onProductAddToCart?: (id: number) => void;
+  interestCounts: { [productId: string]: number };
+  userInterests: { [productId: string]: boolean };
+  onToggleInterest: (productId: string) => void;
 }
 
 export function ProductGrid({
   isTwoColumns,
-  onProductFavorite,
-  onProductAddToCart,
+  interestCounts,
+  userInterests,
+  onToggleInterest,
 }: ProductGridProps) {
   const { language } = useLanguage();
   const categories = productCategories[language];
@@ -31,7 +33,7 @@ export function ProductGrid({
 
   const availableCategories = availableCategoriesMap.map(cat => cat.display);
 
-  const [activeCardId, setActiveCardId] = useState<number | null>(null);
+  const [activeCardId, setActiveCardId] = useState<string | null>(null);
   const [selectedCategory, setSelectedCategory] = useState(
     availableCategories[0]
   );
@@ -51,13 +53,17 @@ export function ProductGrid({
           return categoryMap && product.category.en === categoryMap.english;
         });
 
-  const handleCardClick = (id: number) => {
+  const handleCardClick = (id: string) => {
     setActiveCardId(activeCardId === id ? null : id);
   };
 
   const handleCategoryClick = (category: string) => {
     setSelectedCategory(category);
     setActiveCardId(null);
+  };
+
+  const handleProductInterest = (id: string) => {
+    onToggleInterest(id);
   };
 
   const gridClasses = isTwoColumns
@@ -172,8 +178,9 @@ export function ProductGrid({
                     index={index + groupIndex * 4}
                     isActive={activeCardId === product.id}
                     onCardClick={() => handleCardClick(product.id)}
-                    onFavorite={() => onProductFavorite?.(product.id)}
-                    onAddToCart={() => onProductAddToCart?.(product.id)}
+                    onInterest={() => handleProductInterest(product.id)}
+                    interestCount={interestCounts[product.id] || 0}
+                    isInterested={userInterests[product.id] || false}
                   />
                 ))}
               </div>
@@ -189,8 +196,9 @@ export function ProductGrid({
               index={index}
               isActive={activeCardId === product.id}
               onCardClick={() => handleCardClick(product.id)}
-              onFavorite={() => onProductFavorite?.(product.id)}
-              onAddToCart={() => onProductAddToCart?.(product.id)}
+              onInterest={() => handleProductInterest(product.id)}
+              interestCount={interestCounts[product.id] || 0}
+              isInterested={userInterests[product.id] || false}
             />
           ))}
         </div>
