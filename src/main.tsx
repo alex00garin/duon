@@ -8,7 +8,7 @@ import { Route as rootRoute } from "./routes/__root";
 import { Route as indexRoute } from "./routes/index";
 import { Route as aboutRoute } from "./routes/about";
 import { Route as shopRoute } from "./routes/shop";
-import { Route as coffeeRoute } from "./routes/coffee";
+// import { Route as coffeeRoute } from "./routes/coffee";
 import { Toaster } from "./components/ui/sonner";
 
 // Create route tree manually
@@ -16,7 +16,7 @@ const routeTree = rootRoute.addChildren([
   indexRoute,
   aboutRoute,
   shopRoute,
-  coffeeRoute,
+  // coffeeRoute,
 ]);
 
 // Create a new router instance

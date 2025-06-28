@@ -41,13 +41,13 @@ export function MenuDropdown({ isOpen, onClose }: MenuDropdownProps) {
           >
             Home
           </Link>
-          <Link
+          {/* <Link
             to="/coffee"
             className="block text-end hover:text-neutral-300 dark:hover:text-secondary transition-colors"
             onClick={onClose}
           >
             Coffee
-          </Link>
+          </Link> */}
           <Link
             to="/shop"
             className="block text-end hover:text-neutral-300 dark:hover:text-secondary transition-colors"
