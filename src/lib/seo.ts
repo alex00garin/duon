@@ -62,7 +62,7 @@ export const defaultSEOConfig: SEOConfig = {
     "Welsh coffee",
     "DŪON",
   ],
-  image: "/assets/beans/bg-1.png",
+  image: "/og-image.png",
   type: "website",
   locale: "en_GB",
   alternateLocales: ["cy_GB"],
@@ -71,7 +71,7 @@ export const defaultSEOConfig: SEOConfig = {
 export const duonOrganization: OrganizationData = {
   name: "DŪON",
   url: "https://duon.coffee",
-  logo: "https://duon.coffee/favicon.png",
+  logo: "https://duon.coffee/og-image.png",
   description:
     "Exceptional coffee and design from Cardiff. We create thoughtfully curated products for those who refuse to settle for ordinary.",
   address: {

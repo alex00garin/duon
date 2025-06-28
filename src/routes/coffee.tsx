@@ -74,7 +74,7 @@ function Coffee() {
     description: t.meta.description,
     keywords: t.meta.keywords,
     type: "website",
-    image: "/coffee/espresso-machine.png",
+    image: "/og-image.png",
     structuredData: [
       generateOrganizationStructuredData(duonOrganization),
       generateBreadcrumbStructuredData([

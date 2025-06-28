@@ -74,7 +74,7 @@ function Home() {
     description: t.meta.description,
     keywords: t.meta.keywords,
     type: "website",
-    image: "/assets/beans/bg-1.png",
+    image: "/og-image.png",
     structuredData: [
       generateOrganizationStructuredData(duonOrganization),
       generateWebsiteStructuredData(),
