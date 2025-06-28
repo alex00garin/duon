@@ -1,6 +1,7 @@
 import { Logo } from "./branding/Logo";
 import { Navigation } from "./navigation/Navigation";
 import { ModeToggle } from "./theme/mode-toggle";
+import { LanguageToggle } from "./language/LanguageToggle";
 import { useScrollVisibility } from "../hooks/useScrollVisibility";
 import { HEADER_HEIGHT } from "../lib/constants";
 
@@ -23,6 +24,7 @@ export function Header() {
 
       <div className="flex items-center h-full">
         <Navigation />
+        <LanguageToggle />
         <ModeToggle />
       </div>
     </header>

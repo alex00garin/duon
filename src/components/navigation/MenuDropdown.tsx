@@ -1,11 +1,30 @@
 import { Link } from "@tanstack/react-router";
+import { useLanguage } from "@/components/language/useLanguage";
 
 interface MenuDropdownProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
+const translations = {
+  en: {
+    home: "Home",
+    shop: "Shop",
+    about: "About",
+    coffee: "Coffee",
+  },
+  cy: {
+    home: "Cartref",
+    shop: "Siop",
+    about: "Amdanom",
+    coffee: "Coffi",
+  },
+};
+
 export function MenuDropdown({ isOpen, onClose }: MenuDropdownProps) {
+  const { language } = useLanguage();
+  const t = translations[language];
+
   if (!isOpen) return null;
 
   return (
@@ -39,28 +58,28 @@ export function MenuDropdown({ isOpen, onClose }: MenuDropdownProps) {
             className="block text-end hover:text-neutral-300 dark:hover:text-secondary transition-colors"
             onClick={onClose}
           >
-            Home
+            {t.home}
           </Link>
           {/* <Link
             to="/coffee"
             className="block text-end hover:text-neutral-300 dark:hover:text-secondary transition-colors"
             onClick={onClose}
           >
-            Coffee
+            {t.coffee}
           </Link> */}
           <Link
             to="/shop"
             className="block text-end hover:text-neutral-300 dark:hover:text-secondary transition-colors"
             onClick={onClose}
           >
-            Shop
+            {t.shop}
           </Link>
           <Link
             to="/about"
             className="block text-end hover:text-neutral-300 dark:hover:text-secondary transition-colors"
             onClick={onClose}
           >
-            About
+            {t.about}
           </Link>
         </nav>
       </div>

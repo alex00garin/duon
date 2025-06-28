@@ -5,6 +5,7 @@ import { ProductGrid } from "@/components/shop/ProductGrid";
 import { LayoutToggle } from "@/components/shop/LayoutToggle";
 import { toast } from "sonner";
 import { useState } from "react";
+import { useLanguage } from "@/components/language/useLanguage";
 
 export const Route = createRoute({
   getParentRoute: () => rootRoute,
@@ -12,7 +13,24 @@ export const Route = createRoute({
   component: Shop,
 });
 
+const translations = {
+  en: {
+    title: "Shop",
+    description: "Browse our collection of products and services.",
+    toastFavorite: "Added to favorites",
+    toastCart: "Added to cart",
+  },
+  cy: {
+    title: "Siop",
+    description: "Pori drwy ein casgliad o gynhyrchion a gwasanaethau.",
+    toastFavorite: "Wedi'i ychwanegu at ffefrynnau",
+    toastCart: "Wedi'i ychwanegu at y fasged",
+  },
+};
+
 function Shop() {
+  const { language } = useLanguage();
+  const t = translations[language];
   const [isTwoColumns, setIsTwoColumns] = useState(true);
 
   const handleProductInfo = (id: number) => {
@@ -21,20 +39,16 @@ function Shop() {
 
   const handleProductFavorite = (id: number) => {
     console.log(`Toggle favorite for product ${id}`);
-    toast.success(`Added product ${id} to favorites`);
+    toast.success(t.toastFavorite);
   };
 
   const handleProductAddToCart = (id: number) => {
     console.log(`Add product ${id} to cart`);
-    toast.success(`Added product ${id} to cart`);
+    toast.success(t.toastCart);
   };
 
   return (
-    <Section
-      title="Shop"
-      description="Browse our collection of products and services."
-      animated={true}
-    >
+    <Section title={t.title} description={t.description} animated={true}>
       <div className="flex justify-end mb-6">
         <LayoutToggle
           isTwoColumns={isTwoColumns}

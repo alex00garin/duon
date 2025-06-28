@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { ActionButtons } from "./ActionButtons";
 import { Hand } from "lucide-react";
 import type { Product } from "@/lib/shop-data";
+import { useLanguage } from "@/components/language/useLanguage";
 
 interface ProductCardProps {
   product: Product;
@@ -22,6 +23,8 @@ export function ProductCard({
   onFavorite,
   onAddToCart,
 }: ProductCardProps) {
+  const { language } = useLanguage();
+
   return (
     <motion.div
       className="relative group cursor-pointer overflow-hidden"
@@ -45,14 +48,14 @@ export function ProductCard({
       {/* Background Image */}
       <img
         src={product.backgroundImage}
-        alt={`Background ${product.title}`}
+        alt={`Background ${product.title[language]}`}
         className="w-full h-auto object-cover"
       />
 
       {/* Mock Image (Front) */}
       <img
         src={product.mockImage}
-        alt={product.title}
+        alt={product.title[language]}
         className={`
           absolute inset-0 w-full h-full object-cover
           transition-transform duration-500 ease-in-out
